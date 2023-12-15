@@ -14,54 +14,103 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <div class="text-center my-5 pb-5">
-        <pre>Calculadora Ver07dic23. Ronald Guerrero</pre>
+    <div class="text-center my-4 pb-5">
+        <pre>Calculadora Ver.15dic23. Ronald Guerrero</pre>
+        <pre><span id="fecha"></span></pre>
     </div>
-    <div class="container col-8 text-center mt-5">
+    <div class="container col-8 text-center mt-3">
             <div class="d-flex flex-row justify-content-center">
                 <div class="col-4 pb-4">
-                    <div class="card py-4 px-5 mx-3">
+                    <div class="card py-4 ms-0 me-3 px-3">
                         <input title="cifra1" id="num1" type="number" class="form-control no-border">
                     </div>
                 </div>
                 <div class="col-4 pb-4">
-                    <div class="card py-4 px-5 mx-3">
+                    <div class="card py-4 ms-3 me-0 px-3">
                         <input title="cifra2" id="num2" type="number" class="form-control no-border">
                     </div>
                 </div>
             </div>
-        <div class="d-flex justify-content-center py-4 mt-3 px-5">
-            <a href="#" title="Plus"id="plusIcon" onclick="plus()"><i class="fa-solid fa-plus px-4 fa-2xl"></i></a>
-            <a href="#" title="Minus"id="minusIcon" onclick="minus()"><i class="fa-solid fa-minus px-4 fa-2xl"></i></a>
-            <a href="#" title="Multi"id="multiIcon" onclick="multi()"><i class="fa-solid fa-xmark px-4 fa-2xl"></i></a>
-            <a href="#" title="Split"id="splitIcon" onclick="split()"><i class="fa-solid fa-divide px-4 fa-2xl"></i></a>
-            <a href="#" title="Rotate"id="rotateIcon" onclick="rotate()"><i class="fa-solid fa-arrows-rotate px-4 fa-2xl"></i></a>
-            <a href="#" title="Root"id="rootIcon" onclick="root()"><i class="fa-solid fa-square-root-variable px-4 fa-2xl"></i></a>
-            <a href="#" title="Sign"id="signIcon" onclick="signo()"><i class="fa-solid fa-plus-minus px-4 fa-2xl"></i></a>
+        <div class="d-flex justify-content-center py-3 mb-4 mt-3 px-5">
+            <a href="#" title="Plus" id="plusIcon" onclick="plus()"><i class="fa-solid fa-plus px-4 fa-2xl"></i></a>
+            <a href="#" title="Minus" id="minusIcon" onclick="minus()"><i class="fa-solid fa-minus px-4 fa-2xl"></i></a>
+            <a href="#" title="Multi" id="multiIcon" onclick="multi()"><i class="fa-solid fa-xmark px-4 fa-2xl"></i></a>
+            <a href="#" title="Split" id="splitIcon" onclick="split()"><i class="fa-solid fa-divide px-4 fa-2xl"></i></a>
+            <a href="#" title="Rotate" id="rotateIcon" onclick="rotate()"><i class="fa-solid fa-arrows-rotate px-4 fa-2xl"></i></a>
+            <a href="#" title="Root" id="rootIcon" onclick="root()"><i class="fa-solid fa-square-root-variable px-4 fa-2xl"></i></a>
+            <a href="#" title="Sign" id="signIcon" onclick="signo()"><i class="fa-solid fa-plus-minus px-4 fa-2xl"></i></a>
             <a href="#" title="1 / x" id="invIcon" onclick="invert()"><i class="fa-solid fa-arrows-up-to-line px-4 fa-2xl"></i></a>
         </div>
-        <div class="py-4 mt-3 d-flex justify-content-center">
-            <div class="col-8 card py-4">
-                <h2><span id="result"></span></h2> 
+        <div class="d-flex justify-content-evenly px-3">
+            <div id="btn1" class="btn text-info" onclick="memo1()"><pre>MR.1</pre></div>
+            <div id="btn2" class="btn text-info" onclick="memo2()"><pre>MR.2</pre></div>
+            <div id="btn3" class="btn text-info" onclick="memo3()"><pre>MR.3</pre></div>
+        </div>
+        <div class="d-flex justify-content-evenly px-5 pb-3">
+            <p id="mem1" style="border: thin solid rgb(170, 170, 204); width: 120px; height: 30px;" class="rounded"></p>
+            <p id="mem2" style="border: thin solid rgb(170, 170, 204); width: 120px; height: 30px;" class="rounded"></p>
+            <p id="mem3" style="border: thin solid rgb(170, 170, 204); width: 120px; height: 30px;" class="rounded"></p>
+        </div>
+        <div class="py-2 mt-1 d-flex justify-content-center">
+            <div class="col-8 card py-3">
+                <h3><span id="result"></span></h3> 
             </div>
         </div>
     </div>
     <script>
+
+        // Memorias
+
+        function memo1(){
+            const btnMem1 = document.querySelector("#btn1")
+            const txMem1 = document.querySelector("#mem1")
+            const txResult = document.querySelector("#result").innerHTML
+            txMem1.innerHTML = txResult
+        }
+
+        function memo2(){
+            const btnMem2 = document.querySelector("#btn2")
+            const txMem2 = document.querySelector("#mem2")
+            const txResult = document.querySelector("#result").innerHTML
+            txMem2.innerHTML = txResult
+        }
+
+        function memo3(){
+            const btnMem3 = document.querySelector("#btn3")
+            const txMem3 = document.querySelector("#mem3")
+            const txResult = document.querySelector("#result").innerHTML
+            txMem3.innerHTML = txResult
+        }
+
+        /* 
         document.getElementById("num1").addEventListener('input', function(){
             const input1 = document.getElementById("num1").value;
-            // console.log(input1)
+            
         })
 
         document.getElementById("num2").addEventListener('input', function(){
             const input2 = document.getElementById("num2").value;
-            // console.log(input2)
+            
         })
 
-        function plus() {
+        document.getElementById("result").addEventListener('change', function(){
+            const spanResult = Number(document.querySelector("#result")) 
+            
+        })
+         */
+
+        let now = new Date().toLocaleDateString('es-CL', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+        
+        const fecha = document.getElementById("fecha")
+        fecha.innerHTML = now
+
+        
+        function plus() {        
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            sumar = input1 + input2
+            sumar = Number(input1 + input2) 
+            console.log('sumar --->', sumar)
             spanResult.innerHTML = sumar.toLocaleString('es-CL')
         }
 
@@ -69,7 +118,8 @@
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            restar = input1 - input2
+            restar = Number(input1 - input2) 
+            console.log('restar --->', restar)
             spanResult.innerHTML = restar.toLocaleString('es-CL')
         }
 
@@ -77,54 +127,69 @@
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            multi = input1 * input2
-            spanResult.innerHTML = multi.toLocaleString('es-CL')
+            multi = Number(input1 * input2) 
+            console.log('multi --->', multi)
+            spanResult.innerHTML = multi.toLocaleString('es-CL') 
         }
 
         function split() {
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            split = input1 / input2
-            spanResult.innerHTML = split.toLocaleString('es-CL')
+            split = Number(input1 / input2)
+            console.log('split --->', split)
+            spanResult.innerHTML = split.toLocaleString('es-CL')  
         }
 
         // Revisar la función rotate
+        
+            function rotate() {
 
-        function rotate() {
-            const spanResult = parseInt(document.getElementById("result").value) 
-            const input1 = parseInt(document.getElementById("num1").value)
-            const input2 = parseInt(document.getElementById("num2").value)
+                const spanResult = document.getElementById("result")
+                const input1 = parseInt(document.getElementById("num1").value)
+                const input2 = parseInt(document.getElementById("num2").value)
 
-            input1.innerHTML = spanResult
-            console.log(input1)
-        }
+                console.log('spanResult --->', spanResult);
+                
+                let res = Number(spanResult.innerHTML).toLocaleString('es-CL')
+                console.log('res --->', res)
+
+                spanInput1 = document.querySelector("#num1")
+                console.log('spanInput1  --->', spanInput1 );
+
+                spanInput1.innerHTML = res
+            }
+
 
         function root() {
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            root = Math.sqrt(input1)
-            spanResult.innerHTML = root.toLocaleString('es-CL')
+            root = Number(Math.sqrt(input1))
+            console.log('root --->', root)
+            spanResult.innerHTML = root.toLocaleString('es-CL')  
         }
 
-        // Revisar la función signo
 
         function signo() {
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            signo = spanResult * -1
-            spanResult.innerHTML = signo.toLocaleString('es-CL')
+            signar = (spanResult.innerHTML) * (-1)
+            console.log('signar --->', signar)
+            spanResult.innerHTML = signar
         }
 
+        
         function invert() {
             const spanResult = document.getElementById("result")
             const input1 = parseInt(document.getElementById("num1").value)
             const input2 = parseInt(document.getElementById("num2").value)
-            invert = 1/input1
+            invert = Number(1/input1)
+            console.log('invert --->', invert)
             spanResult.innerHTML = invert
         }
+
     </script>
 </body>
 </html>
